@@ -13,7 +13,7 @@ function seo_audit_enqueue_styles() {
 add_action('wp_enqueue_scripts', 'seo_audit_enqueue_styles');
 
 // Define the shortcode function
-function seo_audit_shortcode() {
+function seo_audit_shortcode() { 
     ob_start();
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['url'])) {

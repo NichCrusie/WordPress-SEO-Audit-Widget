@@ -8,7 +8,7 @@ Author: Trustworthy Digital
 
 // Enqueue custom styles
 function seo_audit_enqueue_styles() {
-    wp_enqueue_style('seo-audit-styles', plugins_url('seo-audit-styles.css', __FILE__));
+    wp_enqueue_style('seo-audit-styles', plugins_url('styles.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'seo_audit_enqueue_styles');
 

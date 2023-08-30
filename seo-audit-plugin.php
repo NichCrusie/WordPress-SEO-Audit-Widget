@@ -2,7 +2,7 @@
 /*
 Plugin Name: SEO Audit Toolbox
 Description: Perform a comprehensive SEO audit on a specified URL.
-Version: 1.0
+Version: 0.5
 Author: Trustworthy Digital
 */
 

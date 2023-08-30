@@ -2,13 +2,14 @@
 /*
 Plugin Name: SEO Audit Toolbox
 Description: Perform a comprehensive SEO audit on a specified URL.
-Version: 1.0
+Version: 0.6
 Author: Trustworthy Digital
 */
 
-// Enqueue custom styles
+// Enqueue custom styles and scripts
 function seo_audit_enqueue_styles() {
     wp_enqueue_style('seo-audit-styles', plugins_url('styles.css', __FILE__));
+    wp_enqueue_script('seo-audit-script', plugins_url('script.js', __FILE__), array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'seo_audit_enqueue_styles');
 
@@ -72,20 +73,20 @@ function seo_audit_shortcode() {
 
         echo '</ul>';
 
-        // Calculate and display SEO score
-        $seo_score = calculate_seo_score($audit_results);
-        echo '<div class="seo-audit-score">';
-        echo 'SEO Score: ' . $seo_score . '/100';
-        echo '</div>';
-
         echo '</div>'; // Closing tag for 'seo-audit-container'
+
+        // Display the SEO audit score
+        $seoScore = calculate_seo_score($audit_results);
+        echo '<div class="seo-audit-score" style="display: none;">'; // Hide the score initially
+        echo 'SEO Score: ' . $seoScore . '/100';
+        echo '</div>';
     } else {
         // Display URL input form
         echo '<form id="seo-audit-form" method="post">
                   <label for="url">URL:</label>
-                  <input type="url" name="url" placeholder="Enter URL" required>
+                  <input type="url" name="url" required>
                   <label for="target_keyword">Target Keyword:</label>
-                  <input type="text" name="target_keyword" placeholder="Enter Target Keyword" required>
+                  <input type="text" name="target_keyword" required>
                   <button type="submit">Generate Audit</button>
               </form>';
     }
@@ -126,13 +127,13 @@ function perform_seo_audit(
 
     return $audit_results;
 }
-
 // Function to display individual audit check result
 function echo_audit_check($check_result, $check_name) {
     $status_class = $check_result ? 'passed' : 'failed';
     $status_text = $check_result ? 'Passed' : 'Failed';
-    echo '<li class="' . $status_class . '">' . $check_name . ': ' . $status_text . '</li>';
+    echo '<li class="' . $status_class . '" data-check-name="' . $check_name . '">' . $check_name . ': ' . $status_text . '</li>';
 }
+
 
 // Function to check images alt tags
 function check_images_alt_tags($html) {
@@ -142,10 +143,11 @@ function check_images_alt_tags($html) {
 
 // Function to check keyword usage in content
 function check_keyword_usage($html, $keyword) {
-    $content = strip_tags($html);
-    $keyword_occurrences = substr_count(strtolower($content), strtolower($keyword));
+    $content = strtolower(strip_tags($html));
+    $keyword_occurrences = substr_count($content, strtolower($keyword));
     return ($keyword_occurrences > 0);
 }
+
 
 // Function to check for XML sitemap presence in robots.txt
 function check_xml_sitemap_in_robots($html) {

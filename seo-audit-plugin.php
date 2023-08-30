@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: SEO Audit Toolbox
-Description: This plugin allows users to perform a comprehensive SEO audit on a specified URL.
-Version: 0.5
+Description: Perform a comprehensive SEO audit on a specified URL.
+Version: 1.0
 Author: Trustworthy Digital
 */
 

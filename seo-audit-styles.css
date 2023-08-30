@@ -1,0 +1,83 @@
+/* Style for the SEO Audit Plugin */
+.seo-audit-container {
+    background-color: #ffffff;
+    padding: 75px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.seo-audit-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.seo-audit-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.seo-audit-list li {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.passed {
+    color: #008000;
+    background-color: #e8f5e9;
+}
+
+.failed {
+    color: #ff0000;
+    background-color: #ffebee;
+}
+
+.seo-audit-score {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Styling for Input Forms and Buttons */
+input[type="text"],
+input[type="url"] {
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+button[type="submit"] {
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: var(--e-global-color-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--e-global-color-secondary);
+}
+
+/* Additional Styling for SEO Audit Form */
+#seo-audit-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#seo-audit-form label {
+    font-weight: bold;
+}
+
+#seo-audit-form button {
+    width: 100%;
+}
